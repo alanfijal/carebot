@@ -1,0 +1,7 @@
+streamlit>=1.40
+openai>=1.55
+azure-search-documents>=11.5.2
+pypdf>=5.0
+tiktoken>=0.8
+python-dotenv>=1.0
+openpyxl>=3.1

@@ -1,0 +1,11 @@
+[theme]
+primaryColor = "#1f6feb"
+base = "light"
+
+[server]
+# Azure App Service injects the port via $PORT / $WEBSITES_PORT; for local dev
+# this is the default. The startup command in README overrides for production.
+headless = true
+
+[browser]
+gatherUsageStats = false
