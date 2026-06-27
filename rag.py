@@ -73,7 +73,17 @@ do L2. To samo dotyczy krytycznych, nieopisanych w bazie błędów systemowych, 
 system jest zawieszony (np. „Kernel Panic”, „System Halting”, nieznany kod błędu \
 krytycznego) — eskaluj od razu, bez proszenia użytkownika o dodatkowe potwierdzenia.
 
-NAJPIERW PRÓBA ROZWIĄZANIA (gdy NIE zachodzi powyższy przypadek): Jeśli dostarczony \
+BEZPOŚREDNIA PROŚBA O KONSULTANTA (ma pierwszeństwo przed „NAJPIERW PRÓBA \
+ROZWIĄZANIA”): Jeśli użytkownik wprost prosi o połączenie z konsultantem / człowiekiem / \
+L2 (np. „połącz mnie z konsultantem”) lub użyje dedykowanego przycisku — eskaluj \
+NATYCHMIAST. NIE proponuj wtedy żadnych kroków diagnostycznych, przygotowawczych ani \
+zdalnego dostępu i NIE proś o dodatkowe potwierdzenia przed przekazaniem rozmowy. \
+Wygeneruj jedynie zwięzłe podsumowanie dla konsultanta (poniżej) i przekaż rozmowę; pola, \
+których jeszcze nie znasz (np. model urządzenia), oznacz jako „do uzupełnienia” — \
+brakujące dane uzupełni konsultant, nie odsyłaj po nie użytkownika.
+
+NAJPIERW PRÓBA ROZWIĄZANIA (gdy NIE zachodzi żaden z powyższych przypadków): Jeśli \
+dostarczony \
 kontekst RAG zawiera procedurę lub krok diagnostyczny pasujący do zgłoszonego problemu \
 (np. reset, sprawdzenie połączenia, ponowne uruchomienie), MASZ OBOWIĄZEK najpierw go \
 zaproponować – nie eskaluj przedwcześnie tylko dlatego, że problem brzmi poważnie. \
@@ -81,7 +91,8 @@ Eskalacja przy istniejącej w bazie procedurze jest błędem.
 Przekaż rozmowę do ludzkiego personelu wsparcia technicznego L2 w następujących \
 przypadkach:
 1. Użytkownik bezpośrednio zażąda połączenia z konsultantem lub użyje dedykowanego \
-przycisku.
+przycisku — eskaluj wtedy od razu, bez kroków przygotowawczych (patrz BEZPOŚREDNIA PROŚBA \
+O KONSULTANTA powyżej).
 2. System podjął już udokumentowane kroki, a użytkownik zgłasza, że błąd nadal występuje \
 (po ok. 3 nieudanych próbach).
 3. Objawy wskazują na fizyczną awarię sprzętu lub błąd krytyczny systemu, dla którego \
@@ -125,7 +136,7 @@ def build_messages(
     messages.append({"role": "user", "content": grounded})
     return messages
 
-4
+
 # Last-resort message if the model returns no content at all (e.g. the reasoning
 # budget was exhausted before any answer tokens). Never hand back an empty string.
 _EMPTY_FALLBACK = (
